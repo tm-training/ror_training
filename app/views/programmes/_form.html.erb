@@ -1,4 +1,4 @@
-<%= form_with(model: programme, local: true) do |form| %>
+<%= form_for(@programme) do |form| %>
   <% if programme.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
@@ -13,7 +13,16 @@
 
   <div class="field">
     <%= form.label :programme %>
-    <%= form.text_area :programme %>
+    <%= form.text_area :programme, required: true %>
+
+    <%= form.label :about %>
+    <%= form.text_area :about, required: true %>
+
+    <%= form.label :Starttime %>
+    <%= form.text_area :starttime, required: true %>
+
+    <%= form.label :Endtime %>
+    <%= form.text_area :endtime, required: true %>
   </div>
 
   <div class="actions">

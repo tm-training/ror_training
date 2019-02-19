@@ -14,11 +14,11 @@
     <% @programmes.each do |programme| %>
       <tr>
         <td><%= programme.programme %></td>
-        <td><%= programme.user.email %></td>
         <td><%= link_to 'Show', programme %></td>
-        <td><%= link_to 'Edit', edit_programme_path(programme) %></td>
-        <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+        <% if current_user &&  current_user.admin %>
+          <td><%= link_to 'Edit', edit_programme_path(programme) %></td>
+          <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,8 @@
 
 <br>
 
-<%= link_to 'New Programme', new_programme_path %>
+<% if current_user &&  current_user.admin %>
+  <%= link_to 'Add a New Programme', new_programme_path %> <br>
+<% end %>
+<%= link_to 'View Speakers', speakers_path %><br>
+<%= link_to 'Home Page', welcome_index_path %>

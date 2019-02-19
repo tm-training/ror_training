@@ -6,6 +6,7 @@ class ProgrammesController < ApplicationController
   def index
     @programmes = Programme.all
     puts current_user.inspect
+    @speakers = Speaker.all
   end
 
   # GET /programmes/1
@@ -70,6 +71,6 @@ class ProgrammesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programme_params
-      params.require(:programme).permit(:programme)
+      params.require(:programme).permit(:programme, :about, :starttime, :endtime)
     end
 end

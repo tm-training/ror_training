@@ -1,4 +1,5 @@
 class Programme < ApplicationRecord
-  belongs_to :user
+
   has_many :speakers
+  validates_presence_of :programme, :about, :starttime, :endtime
 end

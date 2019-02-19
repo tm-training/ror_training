@@ -1,0 +1,7 @@
+<h1>Welcome to App</h1>
+<% if current_user %>
+<%= link_to 'View Speakers', speakers_path %>
+<%= link_to 'View Programmes', programmes_path %>
+<% else %>
+<h3>Please sign to continue.</h3>
+<% end %>
